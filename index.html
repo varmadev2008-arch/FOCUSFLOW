@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow — Minimal Study Timer</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for clean developer typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Application Header -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <h1 class="brand-title">FocusFlow</h1>
+      </div>
+      <div class="header-badge" id="currentDateBadge">Today</div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <main class="main-content">
+      
+      <!-- Timer Section -->
+      <section class="card timer-card">
+        <!-- Mode Switcher -->
+        <div class="mode-tabs">
+          <button class="mode-btn active" id="studyModeBtn" data-mode="study">
+            <span class="dot"></span> Study (25m)
+          </button>
+          <button class="mode-btn" id="breakModeBtn" data-mode="break">
+            <span class="dot"></span> Break (5m)
+          </button>
+        </div>
+
+        <!-- Timer Display -->
+        <div class="timer-display-wrapper">
+          <div class="timer-display" id="timerDisplay">25:00</div>
+          <div class="timer-mode-label" id="timerModeLabel">Focus Session</div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Timer Controls -->
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="startPauseBtn">
+            <span id="startPauseIcon">▶</span> <span id="startPauseText">Start</span>
+          </button>
+          <button class="btn btn-secondary" id="resetBtn" title="Reset Timer">
+            <span>↺</span> Reset
+          </button>
+          <button class="btn btn-outline" id="skipBtn" title="Skip to Next Mode">
+            <span>⏭</span> Skip
+          </button>
+        </div>
+      </section>
+
+      <!-- Daily Progress Section -->
+      <section class="card progress-card">
+        <div class="section-header">
+          <h2 class="section-title">Daily Progress</h2>
+          <button class="btn-text" id="resetStatsBtn" title="Reset today's stats">Reset Stats</button>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-value" id="statSessions">0</div>
+            <div class="stat-label">Study Sessions</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="statTasks">0</div>
+            <div class="stat-label">Tasks Done</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="statMinutes">0m</div>
+            <div class="stat-label">Focus Time</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks Section -->
+      <section class="card tasks-card">
+        <div class="section-header">
+          <h2 class="section-title">Study Tasks</h2>
+          <span class="task-summary" id="taskSummary">0 tasks</span>
+        </div>
+
+        <!-- Task Input Form -->
+        <form class="task-form" id="taskForm">
+          <input 
+            type="text" 
+            id="taskInput" 
+            class="task-input" 
+            placeholder="What are you working on?" 
+            maxlength="80"
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="btn btn-primary btn-add">
+            <span>+</span> Add
+          </button>
+        </form>
+
+        <!-- Tasks List -->
+        <ul class="task-list" id="taskList">
+          <!-- Dynamically populated via JavaScript -->
+        </ul>
+
+        <!-- Empty State Message -->
+        <div class="empty-state" id="emptyState">
+          <p>No tasks yet. Add a task above to plan your study session!</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>FocusFlow &bull; Press <kbd>Space</kbd> to Start/Pause &bull; Minimal Study Session Timer</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
